@@ -1,0 +1,7 @@
+P:\githubbackup\CSharp\CSharp\FourPrinciplesOfOOP\FourPrinciplesOfOOP\bin\Debug\FourPrinciplesOfOOP.exe.config
+P:\githubbackup\CSharp\CSharp\FourPrinciplesOfOOP\FourPrinciplesOfOOP\bin\Debug\FourPrinciplesOfOOP.exe
+P:\githubbackup\CSharp\CSharp\FourPrinciplesOfOOP\FourPrinciplesOfOOP\bin\Debug\FourPrinciplesOfOOP.pdb
+P:\githubbackup\CSharp\CSharp\FourPrinciplesOfOOP\FourPrinciplesOfOOP\obj\Debug\FourPrinciplesOfOOP.csprojAssemblyReference.cache
+P:\githubbackup\CSharp\CSharp\FourPrinciplesOfOOP\FourPrinciplesOfOOP\obj\Debug\FourPrinciplesOfOOP.csproj.CoreCompileInputs.cache
+P:\githubbackup\CSharp\CSharp\FourPrinciplesOfOOP\FourPrinciplesOfOOP\obj\Debug\FourPrinciplesOfOOP.exe
+P:\githubbackup\CSharp\CSharp\FourPrinciplesOfOOP\FourPrinciplesOfOOP\obj\Debug\FourPrinciplesOfOOP.pdb
