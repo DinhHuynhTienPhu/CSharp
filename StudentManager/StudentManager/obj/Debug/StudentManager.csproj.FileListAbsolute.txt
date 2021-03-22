@@ -1,0 +1,7 @@
+P:\githubbackup\CSharp\CSharp\StudentManager\StudentManager\bin\Debug\StudentManager.exe.config
+P:\githubbackup\CSharp\CSharp\StudentManager\StudentManager\bin\Debug\StudentManager.exe
+P:\githubbackup\CSharp\CSharp\StudentManager\StudentManager\bin\Debug\StudentManager.pdb
+P:\githubbackup\CSharp\CSharp\StudentManager\StudentManager\obj\Debug\StudentManager.csprojAssemblyReference.cache
+P:\githubbackup\CSharp\CSharp\StudentManager\StudentManager\obj\Debug\StudentManager.csproj.CoreCompileInputs.cache
+P:\githubbackup\CSharp\CSharp\StudentManager\StudentManager\obj\Debug\StudentManager.exe
+P:\githubbackup\CSharp\CSharp\StudentManager\StudentManager\obj\Debug\StudentManager.pdb
