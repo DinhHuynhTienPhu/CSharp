@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace StudentManager
 {
-    class Class
+    [Serializable]
+    class Class:Department
     {
         private string name;
         public string Name { get => name; set => name = value; }
-
-        private List<Student> students = new List<Student>();
-        internal List<Student> Students { get => students; set => students = value; }
+        internal List<Student> Students { get; set; } = new List<Student>();
 
     }
 }

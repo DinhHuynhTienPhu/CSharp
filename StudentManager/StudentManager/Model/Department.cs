@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StudentManager
 {
-    class Department
+    [Serializable]
+    class Department:University
     {
         private string name;
 
