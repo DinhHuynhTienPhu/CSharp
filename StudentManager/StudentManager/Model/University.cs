@@ -9,16 +9,16 @@ namespace StudentManager
     [Serializable]
     class University
     {
-        private string name;
+        private string _name;
         public string Name   
         {
-            get { return name; }   
-            set { name = value; }  
+            get { return _name; }   
+            set { _name = value; }  
         }
 
-        internal List<Department> Departments { get => departments; set => departments = value; }
+        internal List<Department> Departments { get => _departments; set => _departments = value; }
 
-        private List<Department> departments  = new List<Department>();
+        private List<Department> _departments  = new List<Department>();
         
     }
 }

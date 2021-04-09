@@ -9,12 +9,12 @@ namespace StudentManager
     [Serializable]
     class Department:University
     {
-        private string name;
+        private string _name;
 
 
-        private List<Class> classes = new List<Class>();
+        private List<Class> _classes = new List<Class>();
 
-        public string Name { get => name; set => name = value; }
-        internal List<Class> Classes { get => classes; set => classes = value; }
+        public string Name { get => _name; set => _name = value; }
+        internal List<Class> Classes { get => _classes; set => _classes = value; }
     }
 }

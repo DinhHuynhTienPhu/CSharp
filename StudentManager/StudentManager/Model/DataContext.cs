@@ -9,7 +9,6 @@ namespace StudentManager.Model
     [Serializable]
     class DataContext
     {
-        public string Version { set; get; }
         public University University = new University();
     }
 }
