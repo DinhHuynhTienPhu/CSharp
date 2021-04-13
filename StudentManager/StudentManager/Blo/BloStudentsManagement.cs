@@ -4,15 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StudentManager.Model;
+using StudentManager.View;
 
 namespace StudentManager.Blo
 {
     class BloStudentsManagement
     {
 
-        public static void UpdateStudent() {
+        public static University AddNewStudent(University university)
+        {
 
-            Student student =Controller.AddNewStudent();
+            Student student = CreateNewStudent();
+
+            
+
             var de = new Department();
             var cls = new Class();
 
@@ -23,24 +28,55 @@ namespace StudentManager.Blo
 
             de.Classes.Add(cls);
 
-           Controller.dataContext.
-                University.
-                Departments.Add(de);
+
+                 university.
+                 Departments.Add(de);
+            return university;
         }
 
 
-        public static void RemoveStudent(String id)
+        public static University RemoveStudent(String id,University university)
         {
 
-            foreach (Department department in Controller.dataContext.University.Departments)
+            foreach (Department department in university.Departments)
             {
-                foreach (Class @class in department.Classes)
+                foreach (Class cclass in department.Classes)
                 {
-                    @class.Students.RemoveAll(x => x.ID1 == id);
+                    cclass.Students.RemoveAll(x => x.ID1 == id);
                 }
             }
-            Console.WriteLine("Deleted");
-            Console.ReadKey();
+            return university;
+        }
+        public static University UpdateStudent(string studentID,University university)
+        {
+            Student updateStudent = CreateNewStudent();
+           university= RemoveStudent(studentID,university);
+            var de = new Department();
+            var cls = new Class();
+
+            cls.Students = new List<Student>();
+            cls.Students.Add(updateStudent);
+
+            de.Classes = new List<Class>();
+            de.Classes.Add(cls);
+
+                university.
+                Departments.Add(de);
+            return university;
+        }
+
+        public static Student CreateNewStudent()
+        {
+
+            Student student = new Student();
+
+
+            student.Name = ViewManagement.InfoInput("Ten");
+            student.Age = ViewManagement.InfoInput("Tuoi");
+            student.ID1 = ViewManagement.InfoInput("Id");
+
+            return student;
+
         }
     }
 }

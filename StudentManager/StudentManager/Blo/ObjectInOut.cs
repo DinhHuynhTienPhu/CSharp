@@ -44,6 +44,7 @@ namespace StudentManager.Blo
                 IFormatter formatter = new BinaryFormatter();
                 Stream stream = new FileStream(DATA_FILE, FileMode.Open, FileAccess.Read);
                 objnew = (DataContext)formatter.Deserialize(stream);
+                #region RemoveComments to debug
                 //foreach (var d in objnew.University.Departments)
                 //{
                 //    foreach (var c in d.Classes)
@@ -54,9 +55,11 @@ namespace StudentManager.Blo
                 //        }
                 //    }
                 //}
+                //Console.ReadKey();
+
+                #endregion;
                 stream.Close();
 
-                //Console.ReadKey();
             }
             catch (Exception ex)
             {

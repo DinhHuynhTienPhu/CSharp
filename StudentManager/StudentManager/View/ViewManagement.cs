@@ -7,10 +7,10 @@ using StudentManager.Model;
 
 namespace StudentManager.View
 {
-    class View
+    class ViewManagement
     {
-        public static void PrintAllStudent( ) {
-            foreach (var d in Controller.dataContext.University.Departments)
+        public static void PrintAllStudent(University university ) {
+            foreach (var d in university.Departments)
             {
                 foreach (var c in d.Classes)
                 {
@@ -23,5 +23,12 @@ namespace StudentManager.View
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
+        public static string InfoInput(string field)
+        {
+            Console.WriteLine("Xin nhap " + field);
+            return Console.ReadLine();
+        }
     }
+
+
 }

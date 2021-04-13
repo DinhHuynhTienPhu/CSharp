@@ -20,16 +20,7 @@ namespace StudentManager
         public string Name { get => _name; set => _name = value; }
         public string ID1 { get => _ID; set => _ID = value; }
         public string Age { get => _age; set => _age = value; }
-        public string University { get => _university_name; set => _university_name = value; }
-        public string Department { get => _department_name; set => _department_name = value; }
-        public string Class_name { get => _class_name; set => _class_name = value; }
 
-        public Student(string tempname, string tempID, float tempscore)
-        {
-            Name = tempname;
-            ID1 = tempID;
-            Age = _age;
-        }
         public Student()
         {
             Name = string.Empty;

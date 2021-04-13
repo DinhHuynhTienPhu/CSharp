@@ -12,14 +12,11 @@ namespace StudentManager
 {
     class Controller
     {
-        private static List<University> universities = new List<University>();
-
-        internal static List<University> Universities { get => universities; set => universities = value; }
 
 
-        public static DataContext dataContext = new DataContext();
+        public  DataContext dataContext = new DataContext();
 
-        public static void InfoManagerment()
+        public void InfoManagerment()
         {
             dataContext = ObjectInOut.Read();
             if (dataContext == null) dataContext = new DataContext();
@@ -27,24 +24,25 @@ namespace StudentManager
             string option = Console.ReadLine();
             if (option == "1")
             {
-                Blo.BloStudentsManagement.UpdateStudent();
-
+               dataContext.University= Blo.BloStudentsManagement.AddNewStudent(dataContext.University );
                 ObjectInOut.Save(dataContext);
             }
             else if (option == "2")
             {
-                UpdateStudent();
+                Console.WriteLine("Please input student's ID you want to update: ");
+                string studentID = Console.ReadLine();
+             dataContext.University=  BloStudentsManagement.UpdateStudent(studentID,dataContext.University);
 
             }
             else if (option == "3")
             {
                 Console.WriteLine("Please input student's ID you want to delete: ");
                 string deleteID = Console.ReadLine();
-               Blo.BloStudentsManagement.RemoveStudent(deleteID);
+             dataContext.University=  Blo.BloStudentsManagement.RemoveStudent(deleteID,dataContext.University);
             }
 
             else if (option == "4") {
-                View.View.PrintAllStudent();
+                View.ViewManagement.PrintAllStudent(dataContext.University);
             }
             else if (option == "5") return;
             //Auto save here
@@ -54,43 +52,8 @@ namespace StudentManager
         }
 
 
-        public static void UpdateStudent() {
-            Console.WriteLine("Please input student's ID you want to update: ");
-            string studentID = Console.ReadLine();
-            Student updateStudent = AddNewStudent();
-            Console.WriteLine("Updating...");
-           Blo.BloStudentsManagement.RemoveStudent(studentID);
-            var de = new Department();
-            var cls = new Class();
-
-            cls.Students = new List<Student>();
-            cls.Students.Add(updateStudent);
-
-            de.Classes = new List<Class>();
-            de.Classes.Add(cls);
-
-            dataContext.
-                University.
-                Departments.Add(de);
-            Console.WriteLine("Done!");
-        }
-        public static Student AddNewStudent() {
-
-            Student student = new Student();
 
 
-                student.Name = InfoInput("Ten");
-                student.Age = InfoInput("Tuoi");
-                student.ID1 = InfoInput("Id");
-
-                return student;
-            
-       }
-        private static string InfoInput(string field)
-        {
-            Console.WriteLine("Xin nhap " + field);
-            return Console.ReadLine();
-        }
 
         
 
