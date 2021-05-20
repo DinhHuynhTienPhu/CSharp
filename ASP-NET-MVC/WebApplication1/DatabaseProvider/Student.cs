@@ -5,12 +5,13 @@ namespace DatabaseProvider
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Globalization;
 
     [Table("webt2289_phu.Student")]
     public partial class Student
     {
         [Key]
-        [Column(Order = 0)]
+        [Column(Order = 1)]
         [StringLength(4)]
         public string ID { get; set; }
 
@@ -24,7 +25,7 @@ namespace DatabaseProvider
         public string CLA_ID { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [Column(Order = 0)]
         [StringLength(4)]
         public string UNI_ID { get; set; }
 
@@ -32,5 +33,6 @@ namespace DatabaseProvider
         public string DEP_ID { get; set; }
 
         public virtual Class Class { get; set; }
+
     }
 }

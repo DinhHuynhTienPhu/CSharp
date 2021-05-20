@@ -3,10 +3,58 @@
     ViewBag.Title = "QueryPage";
 }
 
-<h2>QueryPage</h2>
+<h1>QueryPage</h1>
 
-<form action="/Editor/ReturnStudentByID">
+@*<form action="/Editor/ReturnStudentByID">
    Please input ID of the student you want to find <input type="text" value="0001" name="studentID" />
     <input type="submit" value="Find" />
 
-</form>
+</form>*@
+
+
+<details>
+    <summary>Students edit</summary>
+    <ul>
+        <li>
+           <b> Find student by ID</b>
+            <form action="/Editor/ReturnStudentByID">
+                Please input ID of the student you want to find <input type="text" value="0001" name="studentID" />
+                <input type="submit" value="Find" />
+
+            </form>
+        </li>
+        <li>
+            <b>Add Student</b>
+            <form action="/Editor/AddStudent">
+                Please input ID <input type="text" value="0025" name="id" /><br />
+                Please input Name <input type="text" value="Nguyen Van A" name="name" /><br />
+                Please input Date of birth <input type="text" value="1/1/2001" name="date" /><br />
+                Please input Class ID <input type="text" value="" name="cclass" /><br />
+                Please input school ID <input type="text" value="" name="school" /><br />
+                Please input Department ID <input type="text" value="" name="department" /><br />
+
+                <input type="submit" value="Add" />
+
+            </form>
+        </li>
+        <li>
+            <b>Get All Student</b>
+            <form action="/Editor/GetAllStudent">
+                <input type="submit" value="Get All Student" />
+
+            </form>
+        </li>    
+        <li>
+            <b>Delete Student</b>
+            <form action="/Editor/DeleteStudent">
+                Please input ID <input type="text" value="0001" name="studentID" /><br />
+                Please input school ID <input type="text" value="KHTN" name="school" /><br />
+
+                <input type="submit" value="Delete" />
+
+            </form>
+        </li>
+
+       
+    </ul>
+</details>

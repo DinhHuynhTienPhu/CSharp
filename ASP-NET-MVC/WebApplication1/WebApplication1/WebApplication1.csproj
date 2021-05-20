@@ -175,6 +175,8 @@
     <Content Include="Views\Editor\PostName.cshtml" />
     <Content Include="Views\Editor\QueryPage.cshtml" />
     <Content Include="Views\Editor\ReturnStudentByID.cshtml" />
+    <Content Include="Views\Editor\Notify.cshtml" />
+    <Content Include="Views\Editor\ReturnAllStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
