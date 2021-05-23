@@ -177,6 +177,13 @@
     <Content Include="Views\Editor\ReturnStudentByID.cshtml" />
     <Content Include="Views\Editor\Notify.cshtml" />
     <Content Include="Views\Editor\ReturnAllStudent.cshtml" />
+    <Content Include="Views\Editor\EditStudent.cshtml" />
+    <Content Include="Views\Editor\ReturnClassByID.cshtml" />
+    <Content Include="Views\Editor\ReturnAllClass.cshtml" />
+    <Content Include="Views\Editor\EditClass.cshtml" />
+    <Content Include="Views\Editor\ReturnDepartmentByID.cshtml" />
+    <Content Include="Views\Editor\ReturnAllDepartment.cshtml" />
+    <Content Include="Views\Editor\EditDepartment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

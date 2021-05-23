@@ -1,0 +1,19 @@
+﻿@model List<DatabaseProvider.Department>
+
+<h2>departments </h2>
+<table border="1">
+    <tr> Id</tr>
+    <tr> name</tr>
+    <tr> University </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.DEP_NAME</td>
+            <td>@item.UNI_ID</td>
+
+
+        </tr>
+    }
+</table>
+
