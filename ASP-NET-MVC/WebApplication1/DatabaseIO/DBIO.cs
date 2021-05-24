@@ -40,7 +40,7 @@ namespace DatabaseIO
         public void EditStudent(string id,string name, string date, string cclass, string school, string department) {
             //myDB.Database.ExecuteSqlCommand("insert into Student values ('" + id + "',N'" + name + "','" + date + "','" + cclass + "','" + school + "','" + department + "')");
 
-            myDB.Database.ExecuteSqlCommand("update Student set STU_NAME  = '"+name+"' where Student.ID = '" + id+"'");
+            myDB.Database.ExecuteSqlCommand("update Student set STU_NAME  = N'"+name+"' where Student.ID = '" + id+"'");
 
             myDB.Database.ExecuteSqlCommand("update Student set DATE_OF_BIRTH   = '" + date+"' where Student.ID = '" + id+"'");
             myDB.Database.ExecuteSqlCommand("update Student set CLA_ID   = '" + cclass+"' where Student.ID = '" + id+"'");

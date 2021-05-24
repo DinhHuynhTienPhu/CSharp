@@ -1,4 +1,5 @@
 ﻿@model DatabaseProvider.Student
+    
 @{
     ViewBag.Title = "EditStudent";
 }
@@ -6,8 +7,9 @@
 <h2>Edit Student</h2>
 <form action="/Editor/DoneEditStudent">
     <h3> ID: @Model.ID  <br /></h3>
-    <input type="hidden" value=@Model.ID name="id" height="0" width="0"/><br />
-    Please input Name <input type="text" value=@Model.STU_NAME name="name" /><br />
+    <input type="hidden" value=@Model.ID name="id" height="0" width="0" /><br />
+    student name @Model.STU_NAME<br />
+    Please input Name <input type="text" value='@Model.STU_NAME' name="name" height="100" width="400"/><br />
     Please input Date of birth <input type="text" value=@Model.DATE_OF_BIRTH name="date" /><br />
     Please input Class ID <input type="text" value=@Model.CLA_ID name="cclass" /><br />
     Please input school ID <input type="text" value=@Model.UNI_ID name="school" /><br />
