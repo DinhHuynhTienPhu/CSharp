@@ -43,9 +43,9 @@ namespace DatabaseIO
             myDB.Database.ExecuteSqlCommand("update Student set STU_NAME  = N'"+name+"' where Student.ID = '" + id+"'");
 
             myDB.Database.ExecuteSqlCommand("update Student set DATE_OF_BIRTH   = '" + date+"' where Student.ID = '" + id+"'");
-            myDB.Database.ExecuteSqlCommand("update Student set CLA_ID   = '" + cclass+"' where Student.ID = '" + id+"'");
-            myDB.Database.ExecuteSqlCommand("update Student set UNI_ID   = '" + school+"' where Student.ID = '" + id+"'");
-            myDB.Database.ExecuteSqlCommand("update Student set DEP_ID   = '" + department+"' where Student.ID = '" + id+"'");
+            myDB.Database.ExecuteSqlCommand("update Student set CLA_ID   = '" + cclass+ "', UNI_ID   = '" + school + "' , DEP_ID   = '" + department + "' where Student.ID = '" + id+"'");
+           // myDB.Database.ExecuteSqlCommand("update Student set UNI_ID   = '" + school+"' where Student.ID = '" + id+"'");
+            //myDB.Database.ExecuteSqlCommand("update Student set DEP_ID   = '" + department+"' where Student.ID = '" + id+"'");
         }
         #region class
         public Class GetClassByID(string id) {
