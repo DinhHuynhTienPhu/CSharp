@@ -69,9 +69,9 @@ namespace WebApplication1.Controllers
         }
         #endregion
         #region class
-        public ActionResult ReturnClassByID( string classID,string department,string school) {
+        public ActionResult ReturnClassByID( string classID) {
             DBIO dbio = new DBIO();
-            Class cclass = dbio.GetClassByID(classID,school,department);
+            Class cclass = dbio.GetClassByID(classID);
             return View(cclass);
         }
         public ActionResult AddClass(string id, string name,  string school, string department) {
@@ -84,7 +84,7 @@ namespace WebApplication1.Controllers
         }
         public ActionResult DeleteClass(string classID,string school, string department) {
             DBIO dbio = new DBIO();
-            dbio.DeleteClass(classID, department, school);
+            dbio.DeleteClass(classID);
             ViewBag.notification = "removed class with id= " + classID;
             return View("Notify");
         }
@@ -95,7 +95,7 @@ namespace WebApplication1.Controllers
         }
         public ActionResult EditClass(string classID,string school,string department) {
             DBIO dbio = new DBIO();
-            Class c = dbio.GetClassByID(classID,school,department);
+            Class c = dbio.GetClassByID(classID);
             return View(c);
         }
         public ActionResult DoneEditClass(string id, string name, string school, string department) {
@@ -108,9 +108,9 @@ namespace WebApplication1.Controllers
         }
         #endregion 
         #region department
-        public ActionResult ReturnDepartmentByID( string departmentID,string school) {
+        public ActionResult ReturnDepartmentByID( string departmentID) {
             DBIO dbio = new DBIO();
-            Department d = dbio.GetDepartmentByID(departmentID,school);
+            Department d = dbio.GetDepartmentByID(departmentID);
             return View(d);
         }
         public ActionResult AddDepartment(string id, string name,  string school) {
@@ -123,7 +123,7 @@ namespace WebApplication1.Controllers
         }
         public ActionResult DeleteDepartment(string school, string department) {
             DBIO dbio = new DBIO();
-            dbio.DeleteDepartment(department, school);
+            dbio.DeleteDepartment(department);
             ViewBag.notification = "removed depatment with id= " + department;
             return View("Notify");
         }
@@ -134,7 +134,7 @@ namespace WebApplication1.Controllers
         }
         public ActionResult EditDepartment(string departmentID,string school) {
             DBIO dbio = new DBIO();
-            Department  c = dbio.GetDepartmentByID(departmentID,school);
+            Department  c = dbio.GetDepartmentByID(departmentID);
             return View(c);
         }
         public ActionResult DoneEditDepartment(string id, string name, string school) {

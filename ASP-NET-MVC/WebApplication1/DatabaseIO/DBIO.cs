@@ -48,8 +48,8 @@ namespace DatabaseIO
             //myDB.Database.ExecuteSqlCommand("update Student set DEP_ID   = '" + department+"' where Student.ID = '" + id+"'");
         }
         #region class
-        public Class GetClassByID(string id, string school, string department) {
-            string SQL = "select * from class where ID='" + id + "' and UNI_ID='"+school+"' and DEP_ID='"+ department+"'";
+        public Class GetClassByID(string id) {
+            string SQL = "select * from class where ID='" + id + "'";// and UNI_ID='"+school+"' and DEP_ID='"+ department+"'";
            return myDB.Database.SqlQuery<Class>(SQL).FirstOrDefault();
         }
         public void AddClass(string id, string name,  string school, string department) {
@@ -59,8 +59,8 @@ namespace DatabaseIO
         public List<Class> GetAllClass() {
             return myDB.Database.SqlQuery<Class>("select* from CLASS").ToList();
         }
-        public void DeleteClass(string id,string department,string school) {
-            myDB.Database.ExecuteSqlCommand("DELETE FROM CLASS WHERE id='"+id+"'AND UNI_ID='"+school+"' and DEP_ID='"+department+"'" );
+        public void DeleteClass(string id) {
+            myDB.Database.ExecuteSqlCommand("DELETE FROM CLASS WHERE id='" + id + "'");// AND UNI_ID='"+school+"' and DEP_ID='"+department+"'" );
 
         }
         public void EditClass(string id,string name, string school, string department) {
@@ -74,9 +74,9 @@ namespace DatabaseIO
         #endregion
 
         #region department
-        public Department GetDepartmentByID(string id,string school)
+        public Department GetDepartmentByID(string id)
         {
-            string SQL = "select * from Department where ID='" + id + "' and UNI_ID='"+school+"'";
+            string SQL = "select * from Department where ID='" + id + "'";
             return myDB.Database.SqlQuery<Department>(SQL).FirstOrDefault();
         }
         public void AddDepartment(string id, string name, string school)
@@ -88,9 +88,9 @@ namespace DatabaseIO
         {
             return myDB.Database.SqlQuery<Department>("select* from department").ToList();
         }
-        public void DeleteDepartment(string id,  string school)
+        public void DeleteDepartment(string id)
         {
-            myDB.Database.ExecuteSqlCommand("DELETE FROM department WHERE id='" + id + "'AND UNI_ID='" + school + "' ");
+            myDB.Database.ExecuteSqlCommand("DELETE FROM department WHERE id='" + id + "'");
 
         }
         public void EditDepartment(string id, string name, string school)
