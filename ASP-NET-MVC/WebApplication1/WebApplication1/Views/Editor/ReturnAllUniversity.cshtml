@@ -1,0 +1,19 @@
+﻿@model List<DatabaseProvider.University>
+@{
+    ViewBag.Title = "ReturnAllUniversity";
+}
+
+<h2>All Universities</h2>
+
+<table border="1">
+    <tr> Id</tr>
+    <tr> name</tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.UNI_NAME</td>
+
+        </tr>
+    }
+</table>

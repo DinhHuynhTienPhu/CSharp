@@ -48,8 +48,8 @@ namespace DatabaseIO
             //myDB.Database.ExecuteSqlCommand("update Student set DEP_ID   = '" + department+"' where Student.ID = '" + id+"'");
         }
         #region class
-        public Class GetClassByID(string id) {
-            string SQL = "select * from class where ID='" + id + "'";
+        public Class GetClassByID(string id, string school, string department) {
+            string SQL = "select * from class where ID='" + id + "' and UNI_ID='"+school+"' and DEP_ID='"+ department+"'";
            return myDB.Database.SqlQuery<Class>(SQL).FirstOrDefault();
         }
         public void AddClass(string id, string name,  string school, string department) {
@@ -66,10 +66,10 @@ namespace DatabaseIO
         public void EditClass(string id,string name, string school, string department) {
             //myDB.Database.ExecuteSqlCommand("insert into Student values ('" + id + "',N'" + name + "','" + date + "','" + cclass + "','" + school + "','" + department + "')");
 
-            myDB.Database.ExecuteSqlCommand("update Class set CLA_NAME  = '"+name+"' where ID = '" + id+"'");
+            myDB.Database.ExecuteSqlCommand("update Class set CLA_NAME  = N'"+name+ "', UNI_ID   = '" + school + "' , DEP_ID   = '" + department+"'  where ID = '" + id+"'");
 
-            myDB.Database.ExecuteSqlCommand("update Class set UNI_ID   = '" + school+"' where ID = '" + id+"'");
-            myDB.Database.ExecuteSqlCommand("update Class set DEP_ID   = '" + department+"' where ID = '" + id+"'");
+            //myDB.Database.ExecuteSqlCommand("update Class set UNI_ID   = '" + school+"' where ID = '" + id+"'");
+            //.myDB.Database.ExecuteSqlCommand("update Class set DEP_ID   = '" + department+"' where ID = '" + id+"'");
         }
         #endregion
 
@@ -97,7 +97,36 @@ namespace DatabaseIO
         {
             //myDB.Database.ExecuteSqlCommand("insert into Student values ('" + id + "',N'" + name + "','" + date + "','" + cclass + "','" + school + "','" + department + "')");
 
-            myDB.Database.ExecuteSqlCommand("update department set DEP_NAME  = '" + name + "' where ID = '" + id + "' and UNI_ID='"+school+"'");
+            myDB.Database.ExecuteSqlCommand("update department set DEP_NAME  = N'" + name + "' where ID = '" + id + "' and UNI_ID='"+school+"'");
+
+        }
+        #endregion
+
+        #region university/school
+        public University GetUniversityByID(string id)
+        {
+            string SQL = "select * from University where ID='" + id + "'";// and UNI_ID='" + school + "'";
+            return myDB.Database.SqlQuery<University>(SQL).FirstOrDefault();
+        }
+        public void AddUniversity(string id, string name)
+        {
+            string sql = "insert into University(ID,UNI_NAME) values ('" + id + "',N'" + name + "')";
+            myDB.Database.ExecuteSqlCommand(sql);
+        }
+        public List<University> GetAllUniversity()
+        {
+            return myDB.Database.SqlQuery<University>("select* from University").ToList();
+        }
+        public void DeleteUniversity(string id)
+        {
+            myDB.Database.ExecuteSqlCommand("DELETE FROM University WHERE id='" + id + "'");
+
+        }
+        public void EditUniversity(string id, string name)
+        {
+            //myDB.Database.ExecuteSqlCommand("insert into Student values ('" + id + "',N'" + name + "','" + date + "','" + cclass + "','" + school + "','" + department + "')");
+
+            myDB.Database.ExecuteSqlCommand("update University set UNI_NAME  = N'" + name + "' where ID = '" + id + "' ");// and UNI_ID='" + school + "'");
 
         }
         #endregion

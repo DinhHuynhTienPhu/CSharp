@@ -178,6 +178,9 @@
     <Content Include="Views\Editor\ReturnDepartmentByID.cshtml" />
     <Content Include="Views\Editor\ReturnAllDepartment.cshtml" />
     <Content Include="Views\Editor\EditDepartment.cshtml" />
+    <Content Include="Views\Editor\ReturnAllUniversity.cshtml" />
+    <Content Include="Views\Editor\EditUniversity.cshtml" />
+    <Content Include="Views\Editor\ReturnUniversityByID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

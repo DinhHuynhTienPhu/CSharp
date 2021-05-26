@@ -6,13 +6,14 @@
 <h1>QueryPage</h1>
 
 @*<form action="/Editor/ReturnStudentByID">
-   Please input ID of the student you want to find <input type="text" value="0001" name="studentID" />
-    <input type="submit" value="Find" />
+       Please input ID of the student you want to find <input type="text" value="0001" name="studentID" />
+        <input type="submit" value="Find" />
 
-</form>*@
+    </form>*@
 
 
-    <summary>Students edit</summary> <details>
+<summary>Students edit</summary>
+<details>
     <ul>
         <li>
             <b> Find student by ID</b>
@@ -65,12 +66,13 @@
 
 
     </ul>
-    </details>
-    <br />
-    <summary>Classes Edit</summary><details>
+</details>
+<br />
+<summary>Classes Edit</summary>
+<details>
     <ul>
         <li>
-           <b> Find class by ID</b>
+            <b> Find class by ID</b>
             <form action="/Editor/ReturnClassByID">
                 Please input ID of the class you want to find <input type="text" value="19C1" name="classID" />
                 <input type="submit" value="Find" />
@@ -95,7 +97,7 @@
                 <input type="submit" value="Get All Class" />
 
             </form>
-        </li>    
+        </li>
         <li>
             <b>Delete Class</b>
             <form action="/Editor/DeleteClass">
@@ -106,32 +108,35 @@
                 <input type="submit" value="Delete" />
 
             </form>
-        </li> 
+        </li>
         <li>
             <b>Edit Class</b>
             <form action="/Editor/EditClass">
                 Please input ID <input type="text" value="0001" name="classID" /><br />
+                Please input school ID <input type="text" value="UIT" name="school" /><br />
+                Please input department ID <input type="text" value="C01" name="department" /><br />
 
                 <input type="submit" value="Edit" />
 
             </form>
         </li>
 
-       
+
     </ul>
-    </details>
-    <br/> 
-   <summary>Department Edit</summary><details>
+</details>
+<br />
+<summary>Department Edit</summary>
+<details>
     <ul>
         <li>
-           <b> Find department by ID</b>
-           <form action="/Editor/ReturnDepartmentByID">
-               Please input ID of the department you want to find <input type="text" value="19C1" name="departmentID" /><br />
-               Please input school ID <input type="text" value="" name="school" /><br />
+            <b> Find department by ID</b>
+            <form action="/Editor/ReturnDepartmentByID">
+                Please input ID of the department you want to find <input type="text" value="19C1" name="departmentID" /><br />
+                Please input school ID <input type="text" value="" name="school" /><br />
 
-               <input type="submit" value="Find" />
+                <input type="submit" value="Find" />
 
-           </form>
+            </form>
         </li>
         <li>
             <b>Add department</b>
@@ -150,7 +155,7 @@
                 <input type="submit" value="Get All Department" />
 
             </form>
-        </li>    
+        </li>
         <li>
             <b>Delete Department</b>
             <form action="/Editor/DeleteDepartment">
@@ -159,7 +164,7 @@
                 <input type="submit" value="Delete" />
 
             </form>
-        </li> 
+        </li>
         <li>
             <b>Edit Department</b>
             <form action="/Editor/EditDepartment">
@@ -171,7 +176,58 @@
             </form>
         </li>
 
-       
+
     </ul>
-    </details>
-    <br/>
+</details>
+<br />
+<summary>University Edit</summary>
+<details>
+    <ul>
+        <li>
+            <b> Find University by ID</b>
+            <form action="/Editor/ReturnUniversityByID">
+                Please input ID of the university you want to find <input type="text" value="" name="universityID" /><br />
+
+                <input type="submit" value="Find" />
+
+            </form>
+        </li>
+        <li>
+            <b>Add University</b>
+            <form action="/Editor/AddUniversity">
+                Please input ID <input type="text" value="" name="id" /><br />
+                Please input Name <input type="text" value="" name="name" /><br />
+
+                <input type="submit" value="Add" />
+
+            </form>
+        </li>
+        <li>
+            <b>Get All University </b>
+            <form action="/Editor/GetAllUniversity">
+                <input type="submit" value="Get All University" />
+
+            </form>
+        </li>
+        <li>
+            <b>Delete University</b>
+            <form action="/Editor/DeleteUniversity">
+                Please input ID <input type="text" value="" name="id" /><br />
+                <input type="submit" value="Delete" />
+
+            </form>
+        </li>
+        <li>
+            <b>Edit University</b>
+            <form action="/Editor/EditUniversity">
+                Please input ID <input type="text" value="" name="universityID" /><br />
+
+                <input type="submit" value="Edit" />
+
+            </form>
+        </li>
+
+
+    </ul>
+</details>
+<br />

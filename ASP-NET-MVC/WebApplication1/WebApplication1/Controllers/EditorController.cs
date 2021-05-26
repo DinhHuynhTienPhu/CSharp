@@ -69,9 +69,9 @@ namespace WebApplication1.Controllers
         }
         #endregion
         #region class
-        public ActionResult ReturnClassByID( string classID) {
+        public ActionResult ReturnClassByID( string classID,string department,string school) {
             DBIO dbio = new DBIO();
-            Class cclass = dbio.GetClassByID(classID);
+            Class cclass = dbio.GetClassByID(classID,school,department);
             return View(cclass);
         }
         public ActionResult AddClass(string id, string name,  string school, string department) {
@@ -93,9 +93,9 @@ namespace WebApplication1.Controllers
            return View("ReturnAllClass",dbio.GetAllClass());
             
         }
-        public ActionResult EditClass(string classID) {
+        public ActionResult EditClass(string classID,string school,string department) {
             DBIO dbio = new DBIO();
-            Class c = dbio.GetClassByID(classID);
+            Class c = dbio.GetClassByID(classID,school,department);
             return View(c);
         }
         public ActionResult DoneEditClass(string id, string name, string school, string department) {
@@ -142,6 +142,51 @@ namespace WebApplication1.Controllers
 
             DBIO dbio = new DBIO();
             dbio.EditDepartment(id, name,  school);
+            ViewBag.notification = "Updated your changes";
+            return View("Notify");
+        }
+        #endregion
+        #region university/school
+        public ActionResult ReturnUniversityByID( string universityID)
+        {
+            DBIO dbio = new DBIO();
+            University d = dbio.GetUniversityByID(universityID);
+            return View(d);
+        }
+        public ActionResult AddUniversity(string id, string name)
+        {
+            DBIO dbio = new DBIO();
+
+            dbio.AddUniversity(id, name);
+
+            ViewBag.notification = "Added university with id= " + id;
+            return View("Notify");
+        }
+        public ActionResult DeleteUniversity(string id)
+        {
+            DBIO dbio = new DBIO();
+            dbio.DeleteUniversity(id);
+            ViewBag.notification = "removed university with id= " + id;
+            return View("Notify");
+        }
+        public ActionResult GetAllUniversity()
+        {
+            DBIO dbio = new DBIO();
+            return View("ReturnAllUniversity", dbio.GetAllUniversity());
+
+        }
+        public ActionResult EditUniversity(string universityID)
+        {
+            DBIO dbio = new DBIO();
+            University c = dbio.GetUniversityByID(universityID);
+            return View(c);
+        }
+        public ActionResult DoneEditUniversity(string id, string name)
+        {
+
+
+            DBIO dbio = new DBIO();
+            dbio.EditUniversity(id, name);
             ViewBag.notification = "Updated your changes";
             return View("Notify");
         }
