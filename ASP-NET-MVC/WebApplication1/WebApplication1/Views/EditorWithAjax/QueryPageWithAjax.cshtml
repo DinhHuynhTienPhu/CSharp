@@ -1,0 +1,400 @@
+﻿
+@{
+    ViewBag.Title = "QueryPageWithAjax";
+}
+
+
+<h1>QueryPage</h1>
+
+<summary>Students edit</summary>
+<details>
+    <ul>
+        <li>
+            <b> Find student by ID</b>
+            <form class="FindStudentById">
+                Please input ID of the student you want to find <input type="text"  value="0001" name="studentID" />
+                <button type="button" id="ReturnStudentById-btn">Find</button>
+            </form>
+            <div id="ReturnStudentById">
+
+            </div>
+        </li>
+        <li>
+            <b>Add Student</b>
+            <form id="AddStudentForm">
+                Please input ID <input type="text" value="0025" name="id" /><br />
+                Please input Name <input type="text" value="Nguyen Van A" name="name" /><br />
+                Please input Date of birth <input type="text" value="1/1/2001" name="date" /><br />
+                Please input Class ID <input type="text" value="" name="cclass" /><br />
+                Please input school ID <input type="text" value="" name="school" /><br />
+                Please input Department ID <input type="text" value="" name="department" /><br />
+
+                <button type="button" id="AddStudent-btn">Add</button>
+
+            </form>
+        </li>
+        <li>
+            <b>Get All Student</b>
+            <form>
+                <button type="button" id="GetAllStudent-btn">GetAllStudent</button>
+
+            </form>
+            <table id="ReturnAllStudent"> </table>
+        </li>
+        <li>
+            <b>Delete Student</b>
+            <form id="DeleteStudentForm">
+                Please input ID <input type="text" value="0022" name="studentID" /><br />
+                Please input school ID <input type="text" value="UIT" name="school" /><br />
+
+                <button type="button" id="DeleteStudent-btn">Delete</button>
+
+            </form>
+        </li>
+        <li>
+            <b>Edit Student</b>
+            <form>
+                Please input ID <input id="studentIdForEdit" type="text" value="0001" name="studentID" /><br />
+
+                <button type="button" id="EditStudent-btn">Edit</button>
+
+            </form>
+            <div   >
+                <form id="editStudentForm" style="display:none">
+                    <h3>  name student here <br /></h3>   
+                    <input type="hidden" value='' name="id" height="0" width="0" /><br /> 
+                    Please input Name <input type="text" value='' name="name" height="100" width="400" /><br /> 
+                    Please input Date of birth <input type="text" value='' name="date" /><br />
+                    Please input Class ID <input type="text" value='' name="cclass" /><br />
+                    Please input school ID <input type="text" value='' name="school" /><br />
+                    Please input Department ID <input type="text" value='' name="department" /><br />
+
+                    <button type="button" id="SubmitEditStudent-btn">Edit</button>  
+
+                </form>
+
+
+            </div>
+
+        </li>
+
+
+    </ul>
+</details>
+<br />
+<summary>Classes Edit</summary>
+<details>
+    <ul>
+        <li>
+            <b> Find class by ID</b>
+            <form action="/Editor/ReturnClassByID">
+                Please input ID of the class you want to find <input type="text" value="19C1" name="classID" />
+
+
+                <input type="submit" value="Find" />
+
+            </form>
+        </li>
+        <li>
+            <b>Add Class</b>
+            <form action="/Editor/AddClass">
+                Please input ID <input type="text" value="0025" name="id" /><br />
+                Please input Name <input type="text" value="Nguyen Van A" name="name" /><br />
+                Please input school ID <input type="text" value="" name="school" /><br />
+                Please input Department ID <input type="text" value="" name="department" /><br />
+
+                <input type="submit" value="Add" />
+
+            </form>
+        </li>
+        <li>
+            <b>Get All Class </b>
+            <form action="/Editor/GetAllClass">
+                <input type="submit" value="Get All Class" />
+
+            </form>
+        </li>
+        <li>
+            <b>Delete Class</b>
+            <form action="/Editor/DeleteClass">
+                Please input ID <input type="text" value="2C20" name="classID" /><br />
+
+                <input type="submit" value="Delete" />
+
+            </form>
+        </li>
+        <li>
+            <b>Edit Class</b>
+            <form action="/Editor/EditClass">
+                Please input ID <input type="text" value="0001" name="classID" /><br />
+
+                <input type="submit" value="Edit" />
+
+            </form>
+        </li>
+
+
+    </ul>
+</details>
+<br />
+<summary>Department Edit</summary>
+<details>
+    <ul>
+        <li>
+            <b> Find department by ID</b>
+            <form action="/Editor/ReturnDepartmentByID">
+                Please input ID of the department you want to find <input type="text" value="19C1" name="departmentID" /><br />
+
+                <input type="submit" value="Find" />
+
+            </form>
+        </li>
+        <li>
+            <b>Add department</b>
+            <form action="/Editor/AddDepartment">
+                Please input ID <input type="text" value="" name="id" /><br />
+                Please input Name <input type="text" value="" name="name" /><br />
+                Please input school ID <input type="text" value="" name="school" /><br />
+
+                <input type="submit" value="Add" />
+
+            </form>
+        </li>
+        <li>
+            <b>Get All Department </b>
+            <form action="/Editor/GetAllDepartment">
+                <input type="submit" value="Get All Department" />
+
+            </form>
+        </li>
+        <li>
+            <b>Delete Department</b>
+            <form action="/Editor/DeleteDepartment">
+                Please input ID <input type="text" value="2C20" name="department" /><br />
+                <input type="submit" value="Delete" />
+
+            </form>
+        </li>
+        <li>
+            <b>Edit Department</b>
+            <form action="/Editor/EditDepartment">
+                Please input ID <input type="text" value="" name="departmentID" /><br />
+
+                <input type="submit" value="Edit" />
+
+            </form>
+        </li>
+
+
+    </ul>
+</details>
+<br />
+<summary>University Edit</summary>
+<details>
+    <ul>
+        <li>
+            <b> Find University by ID</b>
+            <form action="/Editor/ReturnUniversityByID">
+                Please input ID of the university you want to find <input type="text" value="" name="universityID" /><br />
+
+                <input type="submit" value="Find" />
+
+            </form>
+        </li>
+        <li>
+            <b>Add University</b>
+            <form action="/Editor/AddUniversity">
+                Please input ID <input type="text" value="" name="id" /><br />
+                Please input Name <input type="text" value="" name="name" /><br />
+
+                <input type="submit" value="Add" />
+
+            </form>
+        </li>
+        <li>
+            <b>Get All University </b>
+            <form action="/Editor/GetAllUniversity">
+                <input type="submit" value="Get All University" />
+
+            </form>
+        </li>
+        <li>
+            <b>Delete University</b>
+            <form action="/Editor/DeleteUniversity">
+                Please input ID <input type="text" value="" name="id" /><br />
+                <input type="submit" value="Delete" />
+
+            </form>
+        </li>
+        <li>
+            <b>Edit University</b>
+            <form action="/Editor/EditUniversity">
+                Please input ID <input type="text" value="" name="universityID" /><br />
+
+                <input type="submit" value="Edit" />
+
+            </form>
+        </li>
+
+
+    </ul>
+</details>
+<br />
+<script>
+    document.getElementById("ReturnStudentById-btn").addEventListener("click", function () { ReturnStudentByID(document.getElementsByClassName("FindStudentById")[0].childNodes[1].value) });
+
+    document.getElementById("AddStudent-btn").addEventListener("click", function () {
+        AddStudent(document.getElementById("AddStudentForm").childNodes[1].value,
+            document.getElementById("AddStudentForm").childNodes[4].value,
+            document.getElementById("AddStudentForm").childNodes[7].value,
+            document.getElementById("AddStudentForm").childNodes[10].value,
+            document.getElementById("AddStudentForm").childNodes[13].value,
+            document.getElementById("AddStudentForm").childNodes[16].value)
+    })
+
+    document.getElementById("GetAllStudent-btn").addEventListener("click", function () { ReturnAllStudent(); })
+
+    document.getElementById("DeleteStudent-btn").addEventListener("click", function () { DeleteStudent(document.getElementById("DeleteStudentForm").childNodes[1].value, document.getElementById("DeleteStudentForm").childNodes[4].value) })
+
+    document.getElementById("EditStudent-btn").addEventListener("click", function(){ EditStudentCall(document.getElementById("studentIdForEdit").value); })
+
+    document.getElementById("SubmitEditStudent-btn").addEventListener("click", function () {
+        DoneEditStudent(
+            document.getElementById("studentIdForEdit").value,
+            document.getElementById("editStudentForm").childNodes[6].value  ,
+            document.getElementById("editStudentForm").childNodes[9].value,
+            document.getElementById("editStudentForm").childNodes[12].value ,
+            document.getElementById("editStudentForm").childNodes[15].value ,
+            document.getElementById("editStudentForm").childNodes[18].value) 
+    })
+
+
+
+
+
+    function ReturnStudentByID(studentId) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "http://localhost:57738/Editorwithajax/ReturnStudentByID?studentID=" + studentId, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("ReturnStudentById").innerHTML = ("Name: " + JSON.parse(this.responseText).STU_NAME
+                    //+ "Date of birth: " + JsonConvert.SerializeObject( JSON.parse(this.responseText).DATE_OF_BIRTH)
+                    + " UNI: " + JSON.parse(this.responseText).UNI_ID
+                    + " DEP: " + JSON.parse(this.responseText).DEP_ID
+                    + " CLASS: " + JSON.parse(this.responseText).CLA_ID);
+            }
+        };
+        alert("Finding...");
+
+
+    }
+    function AddStudent(id, name, date, cclass, school, department) {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST","http://localhost:57738/Editorwithajax/AddStudent?id=" + id + "&name=" + name + "&date="+date+"&cclass=" + cclass + "&school=" + school + "&department=" + department, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                alert("Done adding student with id= " + id);
+            }
+        }
+        //http://localhost:57738/Editorwithajax/AddStudent?id=0029&name=Nguyen+Van+test&date=1%2F1%2F2001&cclass=19C2&school=KHTN&department=CNTT
+    }
+    function ReturnAllStudent() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "http://localhost:57738/Editorwithajax/GetAllStudent", true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+
+                let table = "<tr><th>ID</th><th>Name</th><th>class</th><th>UNI</th></tr>";
+                for (let i = 0; i < JSON.parse(this.responseText).length; i++) {
+                    table += "<tr><td>" +
+                        JSON.parse(this.responseText)[i].ID +
+                        "</td><td>" +
+                        JSON.parse(this.responseText)[i].STU_NAME +
+                        "</td><td>" +
+                        JSON.parse(this.responseText)[i].CLA_ID +
+                        "</td><td>" +
+                        JSON.parse(this.responseText)[i].UNI_ID +
+                        "</td></tr>";
+                }
+                document.getElementById("ReturnAllStudent").innerHTML = table;
+
+            }
+        }
+    }
+    function DeleteStudent(studentId,school) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://localhost:57738/Editorwithajax/DeleteStudent?studentID=" + studentId + "&school=" + school, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Xoa voi id= " + studentId);
+
+            }
+        };
+
+
+    }
+    function EditStudentCall(studentId) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "http://localhost:57738/Editorwithajax/EditStudent?studentID=" + studentId , true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var form = document.getElementById("editStudentForm");
+                form.style.display = "block";
+                form.childNodes[1] = JSON.parse(this.responseText).STU_NAME;
+                form.childNodes[3].value = JSON.parse(this.responseText).ID;
+                form.childNodes[6].value = JSON.parse(this.responseText).STU_NAME;
+
+                var value = JSON.parse( this.responseText).DATE_OF_BIRTH;
+                value = new Date(parseInt(value.replace("/Date(", "").replace(")/", ""), 10));
+                value = convert(value);
+                form.childNodes[9].value = value ;
+                form.childNodes[12].value = JSON.parse(this.responseText).CLA_ID;
+                form.childNodes[15].value = JSON.parse(this.responseText).UNI_ID;
+                form.childNodes[18].value = JSON.parse(this.responseText).DEP_ID;
+            }
+        };
+
+    }
+    function DoneEditStudent(id, name, date, cclass, school, department) {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://localhost:57738/Editorwithajax/DoneEditStudent?id=" + id + "&name=" + name + "&date=" + date + "&cclass=" + cclass + "&school=" + school + "&department=" + department, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                alert(JSON.parse( this.responseText));
+                var form = document.getElementById("editStudentForm");
+                form.style.display = "none";
+            }
+        }
+    }
+
+
+
+
+
+
+
+    function convert(str) {
+        var date = new Date(str),
+            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+            day = ("0" + date.getDate()).slice(-2);
+        return [mnth, day, date.getFullYear()].join("/");
+    }
+
+
+
+    function ToJavaScriptDate(value) {
+        var pattern = /Date(([^)]+))/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+    }
+
+</script>
