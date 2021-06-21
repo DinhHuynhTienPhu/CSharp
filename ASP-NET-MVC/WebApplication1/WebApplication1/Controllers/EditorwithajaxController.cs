@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class EditorwithajaxController : Controller
+    public class EditorWithAjaxController : Controller
     {
         // GET: EditorWithAjax
         public ActionResult Index()
@@ -34,7 +34,6 @@ namespace WebApplication1.Controllers
 
             };
             return Json(returnStudent, JsonRequestBehavior.AllowGet);
-            return View(stu);
         }
         [HttpPost]
         public ActionResult AddStudent(string id, string name, string date, string cclass, string school, string department)
@@ -45,7 +44,6 @@ namespace WebApplication1.Controllers
 
             ViewBag.notification = "Added student with id= " + id;
             return Json(new object());
-            return View("Notify");
         }
                 [HttpPost]
         public ActionResult DeleteStudent(string studentID, string school)
@@ -55,13 +53,11 @@ namespace WebApplication1.Controllers
             ViewBag.notification = "removed student with id= " + studentID;
             return Json(new object());
 
-            return View("Notify");
         }
         public ActionResult GetAllStudent()
         {
             DBIO dbio = new DBIO();
             return Json(dbio.GetAllStudent(), JsonRequestBehavior.AllowGet);
-            return View("ReturnAllStudent", dbio.GetAllStudent());
 
         }
         [HttpGet]
@@ -79,7 +75,6 @@ namespace WebApplication1.Controllers
 
             };
             return Json(returnStudent, JsonRequestBehavior.AllowGet);
-            return View(stu);
         }
         [HttpPost]
         public ActionResult DoneEditStudent(string id, string name, string date, string cclass, string school, string department)
@@ -90,7 +85,6 @@ namespace WebApplication1.Controllers
             dbio.EditStudent(id, name, date, cclass, school, department);
             ViewBag.notification = "Updated your changes";
             return Json(id+" "+ name);
-            return View("Notify");
         }
         #endregion
         #region class
