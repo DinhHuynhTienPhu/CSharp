@@ -7,7 +7,7 @@
 
 <h2 style="text-align:center; color:crimson">Edit Page</h2>
 
-<div class="tab" >
+<div class="tab">
     <button class="tablinks" onclick="openATab(event, 'Students')">Students</button>
     <button class="tablinks" onclick="openATab(event, 'Classes')">Classes</button>
     <button class="tablinks" onclick="openATab(event, 'Departments')">Departments</button>
@@ -95,54 +95,72 @@
     <ul>
         <li>
             <b> Find class by ID</b>
-            <form action="/Editor/ReturnClassByID">
-                Please input ID of the class you want to find <input type="text" value="19C1" name="classID" />
+            <form>
+                Please input ID of the class you want to find <input id="findClassById" type="text" value="19C1" name="classID" />
 
 
-                <input type="submit" value="Find" />
+                <button type="button" id="ReturnClassById-btn">Find</button>
 
             </form>
+            <div id="ReturnClass"></div>
         </li>
         <li>
             <b>Add Class</b>
-            <form action="/Editor/AddClass">
+            <form id="addClassForm">
                 Please input ID <input type="text" value="0025" name="id" /><br />
                 Please input Name <input type="text" value="Nguyen Van A" name="name" /><br />
                 Please input school ID <input type="text" value="" name="school" /><br />
                 Please input Department ID <input type="text" value="" name="department" /><br />
 
-                <input type="submit" value="Add" />
+                <button type="button" id="AddClass-btn">Add</button>
 
             </form>
         </li>
         <li>
             <b>Get All Class </b>
-            <form action="/Editor/GetAllClass">
-                <input type="submit" value="Get All Class" />
+            <form>
+                <button type="button" id="GetAllClass-btn">GetAllClass</button>
 
             </form>
+            <table id="ReturnAllClass"> </table>
+
         </li>
         <li>
             <b>Delete Class</b>
-            <form action="/Editor/DeleteClass">
-                Please input ID <input type="text" value="2C20" name="classID" /><br />
+            <form>
+                Please input ID <input id="deleteClassId" type="text" value="2C20" name="classID" /><br />
 
-                <input type="submit" value="Delete" />
+                <button type="button" id="DeleteClass-btn">Delete</button>
 
             </form>
         </li>
         <li>
             <b>Edit Class</b>
-            <form action="/Editor/EditClass">
-                Please input ID <input type="text" value="0001" name="classID" /><br />
+            <form>
+                Please input ID <input id="classIdForEdit" type="text" value="" name="classID" /><br />
 
-                <input type="submit" value="Edit" />
+                <button type="button" id="EditClass-btn">Edit</button>
 
             </form>
+            <div>
+                <form id="editClassForm" style="display:none">
+                    <h3> Edit class  <br /></h3>
+                    <input type="hidden" value='' name="id" height="0" width="0" /><br />
+                    Please input Name <input type="text" value='' name="name" /><br />
+                    Please input school ID <input type="text" value='' name="school" /><br />
+                    Please input Department ID <input type="text" value='' name="department" /><br />
+
+                    <button type="button" id="SubmitEditClass-btn">Edit</button>
+
+                </form>
+
+
+            </div>
         </li>
 
 
-    </ul></div>
+    </ul>
+</div>
 
 <div id="Departments" class="tabcontent">
     <h3>Departments</h3>
@@ -193,7 +211,8 @@
         </li>
 
 
-    </ul></div>
+    </ul>
+</div>
 
 <div id="Universities" class="tabcontent">
     <h3>Universities</h3>
@@ -243,10 +262,26 @@
         </li>
 
 
-    </ul></div>
+    </ul>
+</div>
 
 
 <script>
+    function openATab(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+
     document.getElementById("ReturnStudentById-btn").addEventListener("click", function () { returnStudentByID(document.getElementsByClassName("FindStudentById")[0].childNodes[1].value) });
     var addStudentForm = document.getElementById("AddStudentForm");
     document.getElementById("AddStudent-btn").addEventListener("click", function () {
@@ -269,6 +304,31 @@
             editStudentForm.childNodes[12].value,
             editStudentForm.childNodes[15].value,
             editStudentForm.childNodes[18].value)
+    })
+
+    document.getElementById("ReturnClassById-btn").addEventListener("click", function () { returnClassByID(document.getElementById("findClassById").value) });
+    var addClassForm = document.getElementById("addClassForm");
+    document.getElementById("AddClass-btn").addEventListener("click", function () {
+        addClass(
+            addClassForm.childNodes[1].value,
+            addClassForm.childNodes[4].value,
+            addClassForm.childNodes[7].value,
+            addClassForm.childNodes[10].value,
+
+        )
+    });
+    document.getElementById("GetAllClass-btn").addEventListener("click", function () { returnAllClass() });
+    document.getElementById("DeleteClass-btn").addEventListener("click", function () {
+        deleteClass(document.getElementById("deleteClassId").value)
+    });
+    document.getElementById("EditClass-btn").addEventListener("click", function () { editClassCall(document.getElementById("classIdForEdit").value); })
+    var editClassForm = document.getElementById("editClassForm");
+    document.getElementById("SubmitEditClass-btn").addEventListener("click", function () {
+        doneEditClass(
+            document.getElementById("classIdForEdit").value,
+            editClassForm.childNodes[6].value,
+            editClassForm.childNodes[9].value,
+            editClassForm.childNodes[12].value)
     })
 
 
@@ -378,21 +438,101 @@
         }
     }
 
+    function returnClassByID(classId) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "/EditorWithAjax/ReturnClassByID?classID=" + classId, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var parsed = JSON.parse(this.responseText);
+                document.getElementById("ReturnClass").innerHTML = (
+                    "Name: " + parsed.CLA_NAME
+                    + " UNI: " + parsed.UNI_ID
+                    + " DEP: " + parsed.DEP_ID
+                );
+            }
+        };
+        alert("Finding...");
 
 
-    function openATab(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
     }
+    function addClass(id, name, school, department) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/EditorWithAjax/AddClass?id=" + id + "&name=" + name + "&school=" + school + "&department=" + department, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                alert("Done adding class with id= " + id);
+            }
+        }
+    }
+    function returnAllClass() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "/EditorWithAjax/GetAllClass", true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                var parsed = JSON.parse(this.responseText);
+
+                let table = "<tr><th>ID</th><th>Name</th><th>department</th><th>UNI</th></tr>";
+                for (let i = 0; i < parsed.length; i++) {
+                    table += "<tr><td>" +
+                        parsed[i].ID +
+                        "</td><td>" +
+                        parsed[i].CLA_NAME +
+                        "</td><td>" +
+                        parsed[i].DEP_ID +
+                        "</td><td>" +
+                        parsed[i].UNI_ID +
+                        "</td></tr>";
+                }
+                document.getElementById("ReturnAllClass").innerHTML = table;
+
+            }
+        }
+    }
+    function deleteClass(classID) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/EditorWithAjax/DeleteClass?classID=" + classID, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Xoa voi id= " + classID);
+
+            }
+        };
+    }
+    function editClassCall(classId) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "/EditorWithAjax/EditClass?classId=" + classId, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var parsed = JSON.parse(this.responseText);
+                var form = document.getElementById("editClassForm");
+                form.style.display = "block";
+                form.childNodes[3].value = parsed.ID;
+                form.childNodes[6].value = parsed.CLA_NAME;
+                form.childNodes[9].value = parsed.UNI_ID;
+                form.childNodes[12].value = parsed.DEP_ID;
+            }
+        };
+
+    }
+    function doneEditClass(id, name, school, department) {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/EditorWithAjax/DoneEditClass?id=" + id + "&name=" + name + "&school=" + school + "&department=" + department, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                alert("done edit");
+                var form = document.getElementById("editClassForm");
+                form.style.display = "none";
+            }
+        }
+    }
+
 
     function convert(str) {
         var date = new Date(str),
@@ -417,8 +557,8 @@
         overflow: hidden;
         border: 1px solid #ccc;
         background-color: #f1f1f1;
-        align-self:center;
-        align-content:center;
+        align-self: center;
+        align-content: center;
     }
 
         /* Style the buttons inside the tab */

@@ -92,7 +92,9 @@ namespace WebApplication1.Controllers
         {
             DBIO dbio = new DBIO();
             Class cclass = dbio.GetClassByID(classID);
-            return View(cclass);
+
+            return Json(cclass, JsonRequestBehavior.AllowGet);
+
         }
         public ActionResult AddClass(string id, string name, string school, string department)
         {
@@ -101,26 +103,27 @@ namespace WebApplication1.Controllers
             dbio.AddClass(id, name, school, department);
 
             ViewBag.notification = "Added class with id= " + id;
-            return View("Notify");
+            return Json(new object());
         }
-        public ActionResult DeleteClass(string classID, string school, string department)
+        public ActionResult DeleteClass(string classID)
         {
             DBIO dbio = new DBIO();
             dbio.DeleteClass(classID);
             ViewBag.notification = "removed class with id= " + classID;
-            return View("Notify");
+            return Json(new object());
         }
         public ActionResult GetAllClass()
         {
             DBIO dbio = new DBIO();
-            return View("ReturnAllClass", dbio.GetAllClass());
+            return Json( dbio.GetAllClass(),JsonRequestBehavior.AllowGet);
 
         }
-        public ActionResult EditClass(string classID, string school, string department)
+        public ActionResult EditClass(string classId)
         {
             DBIO dbio = new DBIO();
-            Class c = dbio.GetClassByID(classID);
-            return View(c);
+            Class c = dbio.GetClassByID(classId);
+            return Json(c, JsonRequestBehavior.AllowGet);
+            
         }
         public ActionResult DoneEditClass(string id, string name, string school, string department)
         {
@@ -129,7 +132,7 @@ namespace WebApplication1.Controllers
             DBIO dbio = new DBIO();
             dbio.EditClass(id, name, school, department);
             ViewBag.notification = "Updated your changes";
-            return View("Notify");
+            return Json(new object());
         }
         #endregion 
         #region department
