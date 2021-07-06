@@ -140,7 +140,7 @@ namespace WebApplication1.Controllers
         {
             DBIO dbio = new DBIO();
             Department d = dbio.GetDepartmentByID(departmentID);
-            return View(d);
+            return Json(d, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddDepartment(string id, string name, string school)
         {
@@ -149,35 +149,35 @@ namespace WebApplication1.Controllers
             dbio.AddDepartment(id, name, school);
 
             ViewBag.notification = "Added department with id= " + id;
-            return View("Notify");
+            return Json(new object());
         }
-        public ActionResult DeleteDepartment(string school, string department)
+        public ActionResult DeleteDepartment( string department)
         {
             DBIO dbio = new DBIO();
             dbio.DeleteDepartment(department);
             ViewBag.notification = "removed depatment with id= " + department;
-            return View("Notify");
+            return Json(new object());
         }
         public ActionResult GetAllDepartment()
         {
             DBIO dbio = new DBIO();
-            return View("ReturnAllDepartment", dbio.GetAllDepartment());
+            return Json( dbio.GetAllDepartment(),JsonRequestBehavior.AllowGet);
 
         }
-        public ActionResult EditDepartment(string departmentID, string school)
+        public ActionResult EditDepartment(string departmentID)
         {
             DBIO dbio = new DBIO();
             Department c = dbio.GetDepartmentByID(departmentID);
-            return View(c);
+            return Json(c, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult DoneEditDepartment(string id, string name, string school)
+        public ActionResult DoneEditDepartment(string id, string name)
         {
 
 
             DBIO dbio = new DBIO();
-            dbio.EditDepartment(id, name, school);
+            dbio.EditDepartment(id, name);
             ViewBag.notification = "Updated your changes";
-            return View("Notify");
+            return Json(new object());
         }
         #endregion
         #region university/school
@@ -185,7 +185,7 @@ namespace WebApplication1.Controllers
         {
             DBIO dbio = new DBIO();
             University d = dbio.GetUniversityByID(universityID);
-            return View(d);
+            return Json(d,JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddUniversity(string id, string name)
         {
@@ -194,26 +194,26 @@ namespace WebApplication1.Controllers
             dbio.AddUniversity(id, name);
 
             ViewBag.notification = "Added university with id= " + id;
-            return View("Notify");
+            return Json(new object());
         }
         public ActionResult DeleteUniversity(string id)
         {
             DBIO dbio = new DBIO();
             dbio.DeleteUniversity(id);
             ViewBag.notification = "removed university with id= " + id;
-            return View("Notify");
+            return Json(new object());
         }
         public ActionResult GetAllUniversity()
         {
             DBIO dbio = new DBIO();
-            return View("ReturnAllUniversity", dbio.GetAllUniversity());
+            return Json( dbio.GetAllUniversity(),JsonRequestBehavior.AllowGet);
 
         }
         public ActionResult EditUniversity(string universityID)
         {
             DBIO dbio = new DBIO();
             University c = dbio.GetUniversityByID(universityID);
-            return View(c);
+            return Json(c,JsonRequestBehavior.AllowGet);
         }
         public ActionResult DoneEditUniversity(string id, string name)
         {
@@ -222,7 +222,7 @@ namespace WebApplication1.Controllers
             DBIO dbio = new DBIO();
             dbio.EditUniversity(id, name);
             ViewBag.notification = "Updated your changes";
-            return View("Notify");
+            return Json(new object());
         }
         #endregion
     }

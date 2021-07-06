@@ -93,11 +93,11 @@ namespace DatabaseIO
             myDB.Database.ExecuteSqlCommand("DELETE FROM department WHERE id='" + id + "'");
 
         }
-        public void EditDepartment(string id, string name, string school)
+        public void EditDepartment(string id, string name)
         {
             //myDB.Database.ExecuteSqlCommand("insert into Student values ('" + id + "',N'" + name + "','" + date + "','" + cclass + "','" + school + "','" + department + "')");
 
-            myDB.Database.ExecuteSqlCommand("update department set DEP_NAME  = N'" + name + "' where ID = '" + id + "' and UNI_ID='"+school+"'");
+            myDB.Database.ExecuteSqlCommand("update department set DEP_NAME  = N'" + name + "' where ID = '" + id + "'");
 
         }
         #endregion

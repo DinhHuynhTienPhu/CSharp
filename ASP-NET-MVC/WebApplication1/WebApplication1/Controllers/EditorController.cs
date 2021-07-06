@@ -144,7 +144,7 @@ namespace WebApplication1.Controllers
 
 
             DBIO dbio = new DBIO();
-            dbio.EditDepartment(id, name,  school);
+            dbio.EditDepartment(id, name);
             ViewBag.notification = "Updated your changes";
             return View("Notify");
         }
